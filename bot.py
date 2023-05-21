@@ -15,11 +15,23 @@ async def on_ready():
     print(f'{client.user} has connected to Discord!')
 
 @client.event
+async def on_error(event, *args, **kwargs):
+    with open('err.log', 'a') as f:
+        if event == 'on_message':
+            f.write(f'Unhandled message: {args[0]}\n')
+        else:
+            raise
+
+@client.event
 async def on_message(message):
+    # Don't respond to ourselves
     if message.author == client.user:
         return
 
     if 'zacina noc' in message.content.lower():
         await message.channel.send('Drz hubu')
+
+    if message.content == 'raise-exception':
+        raise discord.DiscordException
 
 client.run(token)
