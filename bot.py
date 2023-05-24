@@ -32,7 +32,4 @@ async def on_message(message):
     if 'zacina noc' in unidecode(message.content.lower()):
         await message.channel.send('Drz hubu')
 
-    if message.content == 'raise-exception':
-        raise discord.DiscordException
-
 client.run(token)
