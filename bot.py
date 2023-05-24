@@ -2,6 +2,7 @@ import os
 import discord
 
 from dotenv import load_dotenv
+from unidecode import unidecode
 
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
@@ -28,7 +29,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if 'zacina noc' in message.content.lower():
+    if 'zacina noc' in unidecode(message.content.lower()):
         await message.channel.send('Drz hubu')
 
     if message.content == 'raise-exception':
