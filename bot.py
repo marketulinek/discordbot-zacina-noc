@@ -31,5 +31,8 @@ async def on_message(message):
 
     if 'zacina noc' in unidecode(message.content.lower()):
         await message.channel.send('Drz hubu')
+    
+    elif 'kamen' in unidecode(message.content.lower()):
+        await message.channel.send('Zde!')
 
 client.run(token)
